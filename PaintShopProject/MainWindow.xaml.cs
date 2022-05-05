@@ -23,20 +23,24 @@ namespace PaintShopProject
     /// </summary>
     public partial class MainWindow : Window
     {
+        public static Authorization Auth;
         public static PaintProjectEntities db = new PaintProjectEntities();
 
-        private Authorization _auth;
+        public static List<Order> Orders = new List<Order>();
 
         public MainWindow(Authorization auth)
         {
             InitializeComponent();
 
-            _auth = auth;
+            Auth = auth;
+
+            if (Auth.RoleID == 1)
+                AdminBadged.Visibility = Visibility.Visible;
         }
 
         private void UserBtn_Click(object sender, RoutedEventArgs e)
         {
-            MainFrame.Navigate(new UserPage(_auth));
+            MainFrame.Navigate(new UserPage(Auth));
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
@@ -52,6 +56,11 @@ namespace PaintShopProject
         private void Button_Click_2(object sender, RoutedEventArgs e)
         {
             MainFrame.Navigate(new OrderPage());
+        }
+
+        private void AdminBtn_Click(object sender, RoutedEventArgs e)
+        {
+            MainFrame.Navigate(new AdminPage());
         }
     }
 }

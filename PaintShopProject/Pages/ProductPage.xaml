@@ -52,6 +52,9 @@
                                 <GridViewColumn.CellTemplate>
                                     <DataTemplate>
                                         <Button
+                                            CommandParameter="{Binding ID}"
+                                            x:Name="AddOrderBtn"
+                                            Click="AddOrderBtn_Click"
                                             Content="В корзину"
                                             IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
                                             Style="{StaticResource MaterialDesignRaisedSecondaryButton}"

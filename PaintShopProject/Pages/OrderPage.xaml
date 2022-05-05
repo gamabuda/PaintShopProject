@@ -38,7 +38,39 @@
                     </StackPanel>
                 </DataTemplate>
             </GroupBox.HeaderTemplate>
-            <!--  Content here  -->
+            <StackPanel>
+                <StackPanel x:Name="MainStack">
+                    <ListView x:Name="OrderListView" ItemsSource="{Binding ListView}">
+                        <ListView.View>
+                            <GridView>
+                                <GridViewColumn DisplayMemberBinding="{Binding Product.Name}" Header="Краска" />
+                                <GridViewColumn DisplayMemberBinding="{Binding Client.Name}" Header="Покупатель" />
+                                <GridViewColumn DisplayMemberBinding="{Binding Date}" Header="Дата" />
+                                <GridViewColumn DisplayMemberBinding="{Binding Count}" Header="Кол-во" />
+                                <GridViewColumn DisplayMemberBinding="{Binding Product.Price}" Header="Цена" />
+                            </GridView>
+                        </ListView.View>
+                    </ListView>
+                    <TextBox
+                        x:Name="AddressBox"
+                        Margin="0,10"
+                        materialDesign:HintAssist.HelperTextFontSize="16"
+                        materialDesign:HintAssist.Hint="Адрес" />
+                    <Button
+                        Content="Оформить заказ"
+                        IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
+                        Style="{StaticResource MaterialDesignRaisedSecondaryButton}"
+                        ToolTip="Resource name: MaterialDesignRaisedSecondaryButton" Click="Button_Click" />
+                </StackPanel>
+                <StackPanel x:Name="MsgStack">
+                    <materialDesign:Card Margin="16" Padding="32">
+                        <Grid>
+                            <TextBlock x:Name="TitleBlock" Style="{DynamicResource MaterialDesignHeadline6TextBlock}">Ваша корзина пуста :(</TextBlock>
+                            <TextBlock x:Name="MsgBlock" Margin="0, 30">Выберите подходящий вам товар из списка нашего каталога.</TextBlock>
+                        </Grid>
+                    </materialDesign:Card>
+                </StackPanel>
+            </StackPanel>
         </GroupBox>
     </Grid>
 </Page>

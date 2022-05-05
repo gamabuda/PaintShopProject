@@ -33,21 +33,30 @@
                 Margin="0,0,20,0"
                 Badge="{materialDesign:PackIcon Home}"
                 BadgeColorZoneMode="SecondaryMid">
-                <Button Content="Главная" IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}" Click="Button_Click_1" />
+                <Button
+                    Click="Button_Click_1"
+                    Content="Главная"
+                    IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}" />
             </materialDesign:Badged>
 
             <materialDesign:Badged
                 Margin="0,0,20,0"
                 Badge="{materialDesign:PackIcon Palette}"
                 BadgeColorZoneMode="SecondaryMid">
-                <Button Content="Каталог" IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}" Click="Button_Click" />
+                <Button
+                    Click="Button_Click"
+                    Content="Каталог"
+                    IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}" />
             </materialDesign:Badged>
 
             <materialDesign:Badged
                 Margin="0,0,20,0"
                 Badge="{materialDesign:PackIcon Basket}"
                 BadgeColorZoneMode="SecondaryMid">
-                <Button Content="Корзина" IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}" Click="Button_Click_2" />
+                <Button
+                    Click="Button_Click_2"
+                    Content="Корзина"
+                    IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}" />
             </materialDesign:Badged>
 
             <materialDesign:Badged
@@ -58,6 +67,19 @@
                     x:Name="UserBtn"
                     Click="UserBtn_Click"
                     Content="Профиль"
+                    IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}" />
+            </materialDesign:Badged>
+
+            <materialDesign:Badged
+                x:Name="AdminBadged"
+                Visibility="Collapsed"
+                Margin="0,0,20,0"
+                Badge="{materialDesign:PackIcon DatabaseEdit}"
+                BadgeColorZoneMode="SecondaryMid">
+                <Button
+                    x:Name="AdminBtn"
+                    Click="AdminBtn_Click"
+                    Content="Редактор"
                     IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}" />
             </materialDesign:Badged>
         </StackPanel>

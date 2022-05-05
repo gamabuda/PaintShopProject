@@ -21,6 +21,8 @@ namespace PaintShopProject.Pages
     /// </summary>
     public partial class UserPage : Page
     {
+        private Client _client;
+
         public UserPage(Authorization auth)
         {
             InitializeComponent();
@@ -31,6 +33,8 @@ namespace PaintShopProject.Pages
                 {
                     FullnameBox.Text = $"{item.Name} {item.Surname}";
                     PhoneBox.Text = item.Phone;
+                    _client = item;
+                    MsgDrop(CheckHistory());
                     return;
                 }
             }
@@ -46,8 +50,40 @@ namespace PaintShopProject.Pages
                     return;
                 }
             }
+        }
 
-            ProdListView.ItemsSource = MainWindow.db.Order.ToList();
+        private bool CheckHistory()
+        {
+            List<Order> history = new List<Order>();
+
+            foreach (var item in MainWindow.db.Order)
+            {
+                if (item.ClientID == _client.ID)
+                {
+                    history.Add(item);
+                }
+            }
+
+            if (history.Count == 0)
+                return false;
+
+            HistoryListView.ItemsSource = history;
+            return true;
+        }
+
+        public void MsgDrop(bool result)
+        {
+            if (result)
+            {
+                MsgStack.Visibility = Visibility.Collapsed;
+                HistoryStack.Visibility = Visibility.Visible;
+            }
+            else
+            {
+                MsgStack.Visibility = Visibility.Visible;
+                HistoryStack.Visibility = Visibility.Collapsed;
+            }
+                
         }
     }
 }

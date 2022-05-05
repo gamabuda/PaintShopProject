@@ -75,16 +75,25 @@
                             </Grid>
                         </materialDesign:Card>
                     </StackPanel>
-                    <StackPanel HorizontalAlignment="Center" Orientation="Vertical">
+                    <StackPanel x:Name="HistoryStack" HorizontalAlignment="Center" Orientation="Vertical" Margin="20, 0" Visibility="Collapsed">
                         <TextBlock Style="{DynamicResource MaterialDesignHeadline6TextBlock}">История покупок</TextBlock>
-                        <ListView x:Name="ProdListView" ItemsSource="{Binding ListView}">
+                        <ListView x:Name="HistoryListView" ItemsSource="{Binding ListView}">
                             <ListView.View>
                                 <GridView>
-                                    <GridViewColumn DisplayMemberBinding="{Binding Name}" Header="Название" />
-                                    <GridViewColumn DisplayMemberBinding="{Binding Price}" Header="Цена" />
+                                    <GridViewColumn DisplayMemberBinding="{Binding Date}" Header="Дата" />
+                                    <GridViewColumn DisplayMemberBinding="{Binding Product.Name}" Header="Название" />
+                                    <GridViewColumn DisplayMemberBinding="{Binding Product.Price}" Header="Цена" />
                                 </GridView>
                             </ListView.View>
                         </ListView>
+                    </StackPanel>
+                    <StackPanel x:Name="MsgStack">
+                        <materialDesign:Card Margin="16" Padding="32">
+                            <Grid>
+                                <TextBlock x:Name="TitleBlock" Style="{DynamicResource MaterialDesignHeadline6TextBlock}">История пуста</TextBlock>
+                                <TextBlock x:Name="MsgBlock" Margin="0, 30">Здесь будут отображаться все ваши покупки.</TextBlock>
+                            </Grid>
+                        </materialDesign:Card>
                     </StackPanel>
                 </StackPanel>
             </StackPanel>
