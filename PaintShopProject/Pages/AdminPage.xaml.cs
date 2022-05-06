@@ -46,5 +46,24 @@ namespace PaintShopProject.Pages
             StatusComBox.SelectedItem = status.Status.Name;
 
         }
+
+        private void SaveBtn_Click(object sender, RoutedEventArgs e)
+        {
+            OrderStatus test = (OrderStatus)OrderStatusListView.SelectedItem;
+
+            Status status = (Status)StatusComBox.SelectedItem;
+            test.Status = status;
+            test.StatusID = status.ID;
+
+            try
+            {
+                MainWindow.db.SaveChanges();
+                OrderStatusListView.ItemsSource = MainWindow.db.OrderStatus.ToList();
+            }
+            catch
+            {
+                MessageBox.Show("Ошибка!");
+            }
+        }
     }
 }

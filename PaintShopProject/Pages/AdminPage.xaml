@@ -182,7 +182,9 @@
                             </Button>
 
                             <Button
+                                x:Name="SaveBtn"
                                 Grid.Column="1"
+                                Click="SaveBtn_Click"
                                 IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
                                 Style="{StaticResource MaterialDesignFloatingActionMiniSecondaryButton}"
                                 ToolTip="MaterialDesignFloatingActionMiniSecondaryButton">
